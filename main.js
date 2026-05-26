@@ -65,6 +65,37 @@ document.getElementById("startBtn").addEventListener("click", () => {
   player.weight   = Number(document.getElementById("playerWeight").value) || 60;
   player.exercise = document.getElementById("exerciseLevel").value;
 
+  // 🧮 สูตรคำนวณฐาน HP และ Mana ตามสรีรวิทยาและพฤติกรรม
+  let baseHp = 100;
+  let baseMana = 100;
+
+  // 1. ส่งผลจาก พฤติกรรมการออกกำลังกาย (ส่งผลต่อความอึด HP ชัดเจนที่สุด)
+  if (player.exercise === "athlete")   baseHp += 20; // นักกีฬา อึดพิเศษ
+  if (player.exercise === "active")    baseHp += 10; // ออกกำลังกายสม่ำเสมอ
+  if (player.exercise === "sedentary") baseHp -= 15; // ไม่ค่อยออกกำลังกาย ร่างกายอ่อนแอง่าย
+
+  // 2. ส่งผลจาก อายุ (วัยรุ่น/ผู้ใหญ่ตอนต้นถึกทน, เด็กหรือผู้สูงอายุ HP น้อยลง แต่ผู้ใหญ่อาจมีสติ/Mana นิ่งกว่า)
+  if (player.age < 15) {
+    baseHp -= 10;
+    baseMana -= 10; // เด็กเล็กอาจตื่นตระหนกง่าย
+  } else if (player.age > 50) {
+    baseHp -= 20;   // ผู้สูงอายุความจำกัดด้านร่างกาย
+    baseMana += 15; // แต่มีวุฒิภาวะ/สติควบคุมอารมณ์ได้ดีกว่า
+  }
+
+  // 3. ส่งผลจาก เพศ (ดีไซน์ตามค่าเฉลี่ยสรีรวิทยาเชิงกายภาพและความไวต่อความเครียด)
+  if (player.gender === "male") {
+    baseHp += 5;    // มวลกล้ามเนื้อเฉลี่ย
+  } else if (player.gender === "female") {
+    baseMana += 5;  // งานวิจัยบางส่วนชี้ว่าเพศหญิงมีความละเอียดรอบคอบในการจัดการความเครียดระดับชุมชน
+  }
+
+  // นำค่าที่คำนวณได้ไปกำหนดให้ตัวละคร (ทั้งค่าปัจจุบันและค่าสูงสุด)
+  player.maxHp   = baseHp;
+  player.hp      = baseHp;
+  player.maxMana = baseMana;
+  player.mana    = baseMana;
+
   // Apply stats via PassiveEngine
   passiveEngine = new PassiveEngine(player);
   passiveEngine.applyStartingPassive();
