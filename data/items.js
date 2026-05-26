@@ -121,7 +121,7 @@ export const itemsData = {
     category: "medical", 
     weight: 0.1, 
     emoji: "🧼", 
-    tags: ["clean"] 
+    tags: ["clean", "combo"] 
   },
   dry_shampoo: { 
     nameTh: "ดรายแชมพู (ไม่ต้องใช้น้ำ)", 
@@ -187,7 +187,7 @@ export const itemsData = {
     category: "comm",
     weight: 0.4,
     emoji: "🔦",
-    tags: ["direct"]
+    tags: ["direct", "combo"]
   },
   batteries: {
     nameTh: "ถ่านไฟฉายสำรอง",
@@ -245,7 +245,7 @@ export const itemsData = {
     category: "clothing",
     weight: 0.8,
     emoji: "🪖",
-    tags: ["direct"]
+    tags: ["direct", "combo"]
   },
   goggles: { 
     nameTh: "แว่นตานิรภัยกันเศษฝุ่นอาคารถล่ม", 
@@ -253,7 +253,7 @@ export const itemsData = {
     category: "clothing", 
     weight: 0.1, 
     emoji: "🥽", 
-    tags: ["direct"] 
+    tags: ["direct", "combo"] 
   },
   gunte: {
     nameTh: "ถุงมือผ้าหนากันกระจกบาด",
@@ -261,7 +261,7 @@ export const itemsData = {
     category: "clothing",
     weight: 0.1,
     emoji: "🧤",
-    tags: ["direct"]
+    tags: ["direct", "combo"]
   },
   shoes: {
     nameTh: "รองเท้าพื้นหนาพิเศษ",
@@ -269,7 +269,7 @@ export const itemsData = {
     category: "clothing",
     weight: 0.9,
     emoji: "🥾",
-    tags: ["direct"]
+    tags: ["direct", "combo"]
   },
   blanket: {
     nameTh: "ผ้าห่มฟอยล์เก็บความร้อน",
@@ -375,7 +375,7 @@ export const itemsData = {
     category: "tools",
     weight: 0.6,
     emoji: "🧯",
-    tags: ["direct"]
+    tags: ["direct", "combo"]
   },
   crowbar: {
     nameTh: "ชะแลงเหล็กขนาดสั้นงัดประตู",
@@ -383,7 +383,7 @@ export const itemsData = {
     category: "tools",
     weight: 1.2,
     emoji: "🔨",
-    tags: ["direct"]
+    tags: ["direct", "combo"]
   },
   pliers: {
     nameTh: "คีมตัดลวด/เครื่องมือช่าง",
@@ -505,7 +505,7 @@ export const itemsData = {
     category: "food_water",
     weight: 0.4, // น้ำหนักปานกลางพอให้เด็กๆ ต้องคิดคำนวณ
     emoji: "🍖", // หรือจะใช้ 🦮 / 🐈 ก็ได้ครับ
-    tags: ["social", "combo"]
+    tags: ["social", "combo","mental"]
   },
 };
 
