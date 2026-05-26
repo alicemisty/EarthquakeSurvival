@@ -23,6 +23,7 @@ export const comboDatabase = [
   // LIGHT
   { id: "phone_powerbank",  items: ["powerbank","flashlight"],  tags: ["dark","blackout"],     scoreBonus: 15, resultName: "Extended Flashlight",    description: "พาวเวอร์แบงก์ต่อไฟฉายยาวนานขึ้น" },
   { id: "lantern_diy",      items: ["flashlight","water"],      tags: ["dark","blackout"],     scoreBonus: 8,  resultName: "DIY Lantern",            description: "ขวดน้ำกระจายแสงไฟฉาย" },
+  { id: "reflector_spotlight",  items: ["flashlight","foil"],      tags: ["dark","blackout"],     scoreBonus: 8,  resultName: "Reflector Spotlight",     description: "โคมสะท้อนแสงเพิ่มความสว่าง" },
   { id: "tissue_torch",     items: ["lighter",  "tissues"],     tags: ["dark"],                scoreBonus: 3,  resultName: "Tissue Torch",           description: "คบเพลิงทิชชู่ (เสี่ยงไฟ)" },
 
   // WEATHER
@@ -37,9 +38,12 @@ export const comboDatabase = [
 
   // CROWD / SIGNAL
   { id: "flashlight_wipes", items: ["flashlight","wipes"],      tags: ["crowd","signal"],      scoreBonus: 9,  resultName: "Signal Baton",           description: "ผ้าคลุมไฟฉายทำสัญญาณ" },
-  { id: "cash_flashlight",  items: ["cash",     "flashlight"],  tags: ["crowd","signal"],      scoreBonus: 6,  resultName: "Noise Maker",            description: "เหรียญเคาะไฟฉายส่งสัญญาณ" },
-  { id: "notepad_docs",     items: ["notepad",  "docs"],        tags: ["crowd","signal"],      scoreBonus: 12, resultName: "Emergency Sign Board",   description: "สมุด+เอกสารเขียนป้ายนำทาง" },
-
+  { id: "cash_flashlight",  items: ["cash",     "ready_eat"],  tags: ["crowd","signal"],      scoreBonus: 6,  resultName: "Noise Maker",            description: "กระป๋องเหรียญส่งเสียง" },
+  { id: "cash_flashlight2",  items: ["cash",     "water_bottle"],  tags: ["crowd","signal"],      scoreBonus: 6,  resultName: "Noise Maker",            description: "ขวดมีเหรียญส่งเสียง" },
+  { id: "notepad_docs",     items: ["notepad",  "docs"],        tags: ["crowd","signal"],      scoreBonus: 8, resultName: "Emergency Sign Board",   description: "สมุด+เอกสารเขียนป้ายนำทาง" },
+  { id: "sos_signal",     items: ["whistle",  "flashlight"],        tags: ["crowd","signal"],      scoreBonus: 12, resultName: "SOS Signal Duo",   description: "ส่งสัญญาณทั้งแสงและเสียงพร้อมกัน" },
+ { id: "notepad_docs2",     items: ["marker_pen",  "notepad"],        tags: ["crowd","signal"],      scoreBonus: 10, resultName: "Emergency Sign Board",   description: "เขียนข้อความระบุทิศทางการอพยพ จำนวนผู้รอดชีวิต หรือเขียนกรุ๊ปเลือด" },
+  
   // HYGIENE / WATER
   { id: "water_towel_filter",items: ["water",   "towel"],       tags: ["hygiene","water"],     scoreBonus: 7,  resultName: "Water Filter",           description: "ผ้าขนหนูกรองตะกอนน้ำดิบ" },
   { id: "gel_towel_hygiene", items: ["hand_gel","towel"],       tags: ["hygiene"],             scoreBonus: 9,  resultName: "Body Hygiene Kit",       description: "เจลแอลกอฮอล์+ผ้าเช็ดตัว" },
@@ -47,6 +51,8 @@ export const comboDatabase = [
 
   // MENTAL
   { id: "blanket_comfort",  items: ["blanket",  "candy"],       tags: ["panic","stress","mental"],scoreBonus: 12, resultName: "Comfort Kit",         description: "ผ้าห่มอบอุ่น+ลูกอมลดเครียด" },
+  { id: "calming_kit"",  items: ["common_med",  "candy"],       tags: ["panic","stress","mental"],scoreBonus: 12, resultName: "Calming Kit",         description: "ชุดลดความตื่นตระหนก" },
+  { id: "booster_pack"",  items: ["coffee",  "ready_eat"],       tags: ["panic","stress","mental"],scoreBonus: 15, resultName: "Booster Pack",         description: "ชุดเสบียงบำรุงขวัญ" },
   { id: "notepad_family",   items: ["notepad",  "family_photo"],tags: ["mental","stress"],     scoreBonus: 14, resultName: "Memory Support",         description: "เขียนสมุด+ดูรูปครอบครัวคลายใจ" },
 ];
 
