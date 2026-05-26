@@ -24,7 +24,7 @@ export const itemsData = {
     category: "food_water",
     weight: 0.4,
     emoji: "🥜",
-    tags: ["direct", "social"]
+    tags: ["direct", "social","mental"]
   },
   ready_eat: {
     nameTh: "อาหารกระป๋อง/พร้อมทาน",
@@ -33,6 +33,13 @@ export const itemsData = {
     weight: 0.8,
     emoji: "🥫",
     tags: ["direct", "combo"]
+  },
+  chocolate: { 
+    nameTh: "ช็อกโกแลตแท่ง (ให้พลังงานและคลายเครียด)", 
+    nameJp: "チョコレート", 
+    category: "food_water", 
+    weight: 0.1, emoji: "🍫", 
+    tags: ["direct", "mental"] 
   },
   candy: {
     nameTh: "ลูกอมแก้เครียด/เพิ่มน้ำตาล",
@@ -107,6 +114,22 @@ export const itemsData = {
     weight: 0.2,
     emoji: "🧴",
     tags: ["clean"]
+  },
+  soap: { 
+    nameTh: "สบู่ก้อน/สบู่เหลวพกพา", 
+    nameJp: "携帯石鹸", 
+    category: "medical", 
+    weight: 0.1, 
+    emoji: "🧼", 
+    tags: ["clean"] 
+  },
+  dry_shampoo: { 
+    nameTh: "ดรายแชมพู (ไม่ต้องใช้น้ำ)", 
+    nameJp: "ドライシャンプー", 
+    category: "medical", 
+    weight: 0.2, 
+    emoji: "🧴", 
+    tags: ["clean", "mental"] 
   },
   wipes: {
     nameTh: "ทิชชู่เปียกทำความสะอาด",
@@ -196,7 +219,7 @@ export const itemsData = {
     category: "comm",
     weight: 0.2,
     emoji: "🪙",
-    tags: ["social", "combo"]
+    tags: ["social", "combo","direct"]
   },
   paper_map: {
     nameTh: "แผนที่กระดาษจุดอพยพประจำเขต",
@@ -223,6 +246,14 @@ export const itemsData = {
     weight: 0.8,
     emoji: "🪖",
     tags: ["direct"]
+  },
+  goggles: { 
+    nameTh: "แว่นตานิรภัยกันเศษฝุ่นอาคารถล่ม", 
+    nameJp: "保護メガネ", 
+    category: "clothing", 
+    weight: 0.1, 
+    emoji: "🥽", 
+    tags: ["direct"] 
   },
   gunte: {
     nameTh: "ถุงมือผ้าหนากันกระจกบาด",
@@ -304,7 +335,7 @@ export const itemsData = {
     category: "tools",
     weight: 0.2,
     emoji: "🛍️",
-    tags: ["combo", "social", "combo"]
+    tags: ["combo", "social", "tools", "clean"]
   },
   rope: {
     nameTh: "เชือกกู้ภัยหนา 10 เมตร",
