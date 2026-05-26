@@ -18,11 +18,14 @@ export const comboDatabase = [
   { id: "towel_bandage",    items: ["towel",    "tape"],        tags: ["injury","medical"],    scoreBonus: 12, resultName: "Emergency Bandage",      description: "ผ้าขนหนู+เทปห้ามเลือด" },
   { id: "clothes_sling",    items: ["clothes",  "rope"],        tags: ["injury","medical"],    scoreBonus: 8,  resultName: "Arm Sling",              description: "เสื้อ+เชือกพยุงแขน" },
   { id: "book_splint",      items: ["book",     "tape"],        tags: ["injury","medical"],    scoreBonus: 14, resultName: "Book Splint",            description: "หนังสือหนา+เทปดามขา/แขน" },
+  { id: "textbook_splint",      items: ["japanese_textbook",     "tape"],        tags: ["injury","medical"],    scoreBonus: 14, resultName: "Book Splint2",            description: "หนังสือหนา+เทปดามขา/แขน" },
   { id: "map_leg_support",  items: ["paper_map","rope"],        tags: ["injury","medical"],    scoreBonus: 10, resultName: "Map Leg Support",        description: "ม้วนแผนที่+เชือกด้ามขา" },
+  { id: "book_splint2",  items: ["book","towel"],        tags: ["injury","medical"],    scoreBonus: 14, resultName: "Improvised Splint",        description: "เฝือกชั่วคราว" },
 
   // LIGHT
   { id: "phone_powerbank",  items: ["powerbank","flashlight"],  tags: ["dark","blackout"],     scoreBonus: 15, resultName: "Extended Flashlight",    description: "พาวเวอร์แบงก์ต่อไฟฉายยาวนานขึ้น" },
   { id: "lantern_diy",      items: ["flashlight","water"],      tags: ["dark","blackout"],     scoreBonus: 8,  resultName: "DIY Lantern",            description: "ขวดน้ำกระจายแสงไฟฉาย" },
+   { id: "lantern_diy2",    items: ["flashlight","water_bottle"],      tags: ["dark","blackout"],     scoreBonus: 8,  resultName: "DIY Lantern2",            description: "ขวดน้ำกระจายแสงไฟฉาย2" },
   { id: "reflector_spotlight",  items: ["flashlight","foil"],      tags: ["dark","blackout"],     scoreBonus: 8,  resultName: "Reflector Spotlight",     description: "โคมสะท้อนแสงเพิ่มความสว่าง" },
   { id: "tissue_torch",     items: ["lighter",  "tissues"],     tags: ["dark"],                scoreBonus: 3,  resultName: "Tissue Torch",           description: "คบเพลิงทิชชู่ (เสี่ยงไฟ)" },
 
@@ -54,6 +57,8 @@ export const comboDatabase = [
   { id: "calming_kit"",  items: ["common_med",  "candy"],       tags: ["panic","stress","mental"],scoreBonus: 12, resultName: "Calming Kit",         description: "ชุดลดความตื่นตระหนก" },
   { id: "booster_pack"",  items: ["coffee",  "ready_eat"],       tags: ["panic","stress","mental"],scoreBonus: 15, resultName: "Booster Pack",         description: "ชุดเสบียงบำรุงขวัญ" },
   { id: "notepad_family",   items: ["notepad",  "family_photo"],tags: ["mental","stress"],     scoreBonus: 14, resultName: "Memory Support",         description: "เขียนสมุด+ดูรูปครอบครัวคลายใจ" },
+  { id: "easter_eggs",   items: ["sensei_photo",  "japanese_textbook"],tags: ["mental","stress"],     scoreBonus: 20, resultName: "The "Sensei" Easter Eggs",         description: "สองเซนเซและหนังสืออะกิโกะจะทำให้นึกถึงตอนเรียนทุกอย่างออก" },
+];
 ];
 
 // ==========================================
