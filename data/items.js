@@ -497,7 +497,7 @@ export const itemsData = {
     category: "mental",
     weight: 0.05, // เบามาก พกง่าย
     emoji: "📸", // หรือจะใช้ 🖼️ ก็ได้ครับ
-    tags: ["mental","combo"]]
+    tags: ["mental","combo"]
   },
   pet_food: {
     nameTh: "อาหารสัตว์เลี้ยงสำเร็จรูป (สำหรับสุนัขและแมว)",
