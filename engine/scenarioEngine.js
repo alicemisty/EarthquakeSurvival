@@ -48,38 +48,55 @@ export function resetUsedScenarios() {
 }
 
 // ==========================================
-// สร้าง timeline 10 scenarios (แบ่งประเภทเท่าๆ กัน)
+// สร้าง timeline 10 scenarios (แบ่งประเภทเท่าๆ กัน และเรียงตามเฟส)
 // ==========================================
 export function buildTimeline() {
   resetUsedScenarios();
 
-  // 1. ดึงด่านทั้งหมดจากทุก Phase มารวมกันก่อน
-  const allScenarios = [
-    ...getScenariosByPhase(2),
-    ...getScenariosByPhase(3),
-    ...getScenariosByPhase(4),
-    ...getScenariosByPhase(5)
-  ];
+  const phases = [2, 3, 4, 5];
+  let finalTimeline = [];
 
-  // 2. แยกกลุ่มตามประเภทด่าน
-  const itemPool = allScenarios.filter(s => s.type === "item");
-  const quizPool = allScenarios.filter(s => s.type === "quiz");
+  // กำหนดโควตาการเลือกด่านในแต่ละเฟส (ปรับเปลี่ยนตัวเลขได้ตามต้องการ)
+  // เพื่อให้ได้ไอเทม 5 ข้อ และควิซ 5 ข้อ รวมเป็น 10 ข้อพอดี
+  // ตัวอย่างนี้: เฟส 2 และ 3 เลือกประเภทละ 1 ข้อ | เฟส 4 และ 5 เลือกประเภทละ 2 ข้อ
+  const phaseQuotas = {
+    2: { item: 1, quiz: 1 }, // รวม 2 ข้อ
+    3: { item: 1, quiz: 1 }, // รวม 2 ข้อ
+    4: { item: 1, quiz: 2 }, // รวม 3 ข้อ
+    5: { item: 2, quiz: 1 }  // รวม 3 ข้อ (รวมทั้งหมด 10 ข้อพอดี: Item 5, Quiz 5)
+  };
 
-  // 3. สุ่มดึงมาประเภทละ 5 ข้อ เพื่อให้รวมกันได้ 10 ข้อพอดี (หรือปรับจำนวนตามต้องการ)
-  const selectedItems = pickRandom(itemPool, 5);
-  const selectedQuizzes = pickRandom(quizPool, 5);
+  // วนลูปจัดการทีละเฟส เพื่อล็อกลำดับเฟสให้เรียงจาก 2 -> 3 -> 4 -> 5
+  phases.forEach(phase => {
+    // 1. ดึงด่านเฉพาะเฟสนั้นๆ
+    const phaseScenarios = getScenariosByPhase(phase);
 
-  // 4. สลับชอยส์คำตอบเฉพาะข้อที่เป็น "quiz" ทันทีตั้งแต่ตอนสร้างด่าน
-  const preparedQuizzes = selectedQuizzes.map(scenario => {
-    return {
-      ...scenario,
-      choices: shuffleChoices(scenario.choices) // สลับลำดับชอยส์พฤติกรรมตรงนี้เลย
-    };
+    // 2. แยกกลุ่มตามประเภทในเฟสนั้น
+    const itemPool = phaseScenarios.filter(s => s.type === "item");
+    const quizPool = phaseScenarios.filter(s => s.type === "quiz");
+
+    // 3. สุ่มดึงมาตามโควตาของเฟสนั้นๆ
+    const quota = phaseQuotas[phase];
+    const selectedItems = pickRandom(itemPool, quota.item);
+    const selectedQuizzes = pickRandom(quizPool, quota.quiz);
+
+    // 4. สลับชอยส์คำตอบเฉพาะข้อที่เป็น "quiz" ในเฟสนั้น
+    const preparedQuizzes = selectedQuizzes.map(scenario => {
+      return {
+        ...scenario,
+        choices: shuffleChoices(scenario.choices) // หรือ options ตามโครงสร้างของคุณ
+      };
+    });
+
+    // 5. รวมด่านทั้งสองประเภทของเฟสนี้ แล้วสลับลำดับคละกัน (เพื่อไม่ให้ item ขึ้นก่อน quiz เสมอ)
+    const combinedPhaseScenarios = [...selectedItems, ...preparedQuizzes];
+    const shuffledPhaseScenarios = combinedPhaseScenarios.sort(() => Math.random() - 0.5);
+
+    // 6. ต่อเข้ากับ Timeline หลัก (ทำให้ด่านเฟสนี้ต่อท้ายเฟสก่อนหน้าเสมอ)
+    finalTimeline = [...finalTimeline, ...shuffledPhaseScenarios];
   });
 
-  // 5. รวมด่านทั้งสองประเภทเข้าด้วยกัน แล้วสลับลำดับข้อรวมอีกครั้งเพื่อให้สลับกันโผล่ในเกม
-  const combinedTimeline = [...selectedItems, ...preparedQuizzes];
-  return combinedTimeline.sort(() => Math.random() - 0.5);
+  return finalTimeline;
 }
 
 function pickRandom(arr, n) {
