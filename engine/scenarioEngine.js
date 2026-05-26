@@ -2,7 +2,16 @@
 // [FIX] import path "../data/scenarios.js" (relative ถูกต้อง)
 // [FIX] isGameOver → checkGameOver เพื่อไม่ชนกับ global variable ชื่อเดิม
 // [FIX] applyResultToPlayer clamps ด้วย maxHp / maxMana
-
+// ฟังก์ชันสำหรับสลับตัวเลือกคำตอบ (พฤติกรรม)
+function shuffleChoices(choicesArray) {
+  if (!choicesArray) return [];
+  const shuffled = [...choicesArray];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
 import { scenarios } from "../data/scenarios.js";
 
 // ==========================================
@@ -39,15 +48,39 @@ export function resetUsedScenarios() {
 }
 
 // ==========================================
-// สร้าง timeline 10 scenarios (Phase 2–5)
+// สร้าง timeline 10 scenarios (แบ่งประเภทเท่าๆ กัน)
 // ==========================================
 export function buildTimeline() {
   resetUsedScenarios();
-  const p2 = pickRandom(getScenariosByPhase(2), 3);
-  const p3 = pickRandom(getScenariosByPhase(3), 3);
-  const p4 = pickRandom(getScenariosByPhase(4), 2);
-  const p5 = pickRandom(getScenariosByPhase(5), 2);
-  return [...p2, ...p3, ...p4, ...p5];
+
+  // 1. ดึงด่านทั้งหมดจากทุก Phase มารวมกันก่อน
+  const allScenarios = [
+    ...getScenariosByPhase(2),
+    ...getScenariosByPhase(3),
+    ...getScenariosByPhase(4),
+    ...getScenariosByPhase(5)
+  ];
+
+  // 2. แยกกลุ่มตามประเภทด่าน
+  const itemPool = allScenarios.filter(s => s.type === "item");
+  const quizPool = allScenarios.filter(s => s.type === "quiz");
+
+  // 3. สุ่มดึงมาประเภทละ 5 ข้อ เพื่อให้รวมกันได้ 10 ข้อพอดี (หรือปรับจำนวนตามต้องการ)
+  const selectedItems = pickRandom(itemPool, 5);
+  const selectedQuizzes = pickRandom(quizPool, 5);
+
+  // 4. สลับชอยส์คำตอบเฉพาะข้อที่เป็น "quiz" ทันทีตั้งแต่ตอนสร้างด่าน
+  const preparedQuizzes = selectedQuizzes.map(scenario => {
+    return {
+      ...scenario,
+      choices: shuffleChoices(scenario.choices) // สลับลำดับชอยส์พฤติกรรมตรงนี้เลย
+    };
+  });
+
+  // 5. รวมด่านทั้งสองประเภทเข้าด้วยกัน แล้วสลับลำดับข้อรวมอีกครั้งเพื่อให้สลับกันโผล่ในเกม
+  const combinedTimeline = [...selectedItems, ...preparedQuizzes];
+  return combinedTimeline.sort(() => Math.random() - 0.5);
+}
 }
 
 function pickRandom(arr, n) {
@@ -119,7 +152,17 @@ export function calculateQuizResult(choice) {
 // Default penalty
 // ==========================================
 function getDefaultPenalty(reason = "fail") {
-  return { success: false, tier: "fail", reason, score: 0, hp: -15, mana: -10, useType: "wrong", explanationTh: "เลือกไอเทมไม่ตรงสถานการณ์หรือไม่ได้เลือกไอเทม จึงยังมีความเสี่ยง", explanationJp: "状況に合わない、または未選択のため危険が残ります。" };
+  return {
+    success: false,
+    tier: "fail",
+    reason,
+    score: -20, // 🔴 เปลี่ยนจาก 0 เป็นติดลบ (เช่น -25 หรือตามที่ต้องการ)
+    hp: -15,
+    mana: -10,
+    useType: "wrong",
+    explanationTh: "เลือกไอเทมไม่ตรงสถานการณ์หรือไม่ได้เลือกไอเทม จึงยังมีความเสี่ยง",
+    explanationJp: "状況に合わない、または未選択のため危険が残ります。"
+  };
 }
 
 // ==========================================
