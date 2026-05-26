@@ -1,6 +1,6 @@
 // main.js  — ES Module entry point
-// [FIX] ไฟล์เดิมที่อัพโหลดมาชื่อ main.js แต่เนื้อหาเป็น HTML
-//       ไฟล์นี้คือ JavaScript controller จริงๆ
+// [FIX] แก้ไขระบบการคัดเลือกและ Toggle ไอเทมร่วมกับ InventoryEngine 
+//       รองรับระบบคำนวณ HP/Mana จาก เพศ อายุ และระดับการออกกำลังกาย
 
 import { characterClasses }   from "./data/characters.js";
 import { itemsData }           from "./data/items.js";
@@ -104,7 +104,6 @@ document.getElementById("startBtn").addEventListener("click", () => {
   inventoryEngine = new InventoryEngine(player.maxCarryWeight);
   player.inventoryEngine = inventoryEngine;
 
-
   switchScreen("loginScreen", "statusScreen");
   renderStatusScreen();
 });
@@ -143,7 +142,7 @@ document.getElementById("goBagBtn").addEventListener("click", () => {
 // ==========================================
 function renderBagScreen() {
   document.getElementById("maxWeight").textContent    = player.maxCarryWeight;
-  document.getElementById("currentWeight").textContent = "0";
+  updateBagWeight();
   renderItemGrid("all");
   renderInventoryList();
 }
@@ -159,7 +158,8 @@ function renderItemGrid(category) {
   items.forEach(item => {
     const inBag = inventoryEngine.hasItem(item.id);
     const card  = document.createElement("div");
-    card.className = `item-card ${inBag ? "added" : ""}`;
+    // [FIX] เพิ่มคลาสเรืองแสงสลับสี 'added' หรือ 'selected' ให้การ์ดตรงนี้เพื่อความสวยงาม
+    card.className = `item-card ${inBag ? "added selected" : ""}`;
     card.innerHTML = `
       <h3>${item.emoji} ${item.nameJp}</h3>
       <p style="font-size:11px;margin:4px 0;color:#eee;line-height:1.3;">${item.nameTh}</p>
@@ -183,21 +183,27 @@ function getItemUseLabel(item) {
 }
 
 function toggleBagItem(item) {
-  const result = inventoryEngine.toggleItem(item);
+  // [FIX] ส่ง item.id เข้าไปทำหน้าที่เป็น itemKey เพื่อล็อกรหัสนักคัดแยกไอเทมของ InventoryEngine
+  const result = inventoryEngine.toggleItem(item, item.id);
   if (!result.success) { alert(result.message); return; }
 
   player.inventory = inventoryEngine.getAllItems();
   updateBagWeight();
   renderInventoryList();
-  renderItemGrid(document.querySelector(".tab-btn.active").dataset.category);
+  
+  const activeTab = document.querySelector(".tab-btn.active");
+  const currentCategory = activeTab ? activeTab.dataset.category : "all";
+  renderItemGrid(currentCategory);
 }
 
 function updateBagWeight() {
   const current = inventoryEngine.getCurrentWeight();
   const max     = player.maxCarryWeight;
   const display = document.getElementById("currentWeight");
-  display.textContent  = current;
-  display.style.color  = current > max ? "var(--danger)" : "var(--success)";
+  if (display) {
+    display.textContent  = current;
+    display.style.color  = current > max ? "var(--danger)" : "var(--success)";
+  }
 
   const fill = document.getElementById("weightBarFill");
   if (fill) {
@@ -212,7 +218,7 @@ function renderInventoryList() {
   list.innerHTML = "";
   inventoryEngine.getAllItems().forEach(item => {
     const li = document.createElement("li");
-    li.className = "inventory-item";
+    li.className = "inventory-item selected";
     li.innerHTML = `<span>${item.emoji} ${item.nameTh}</span><strong>${item.weight} kg</strong>`;
     li.addEventListener("click", () => toggleBagItem(item));
     list.appendChild(li);
