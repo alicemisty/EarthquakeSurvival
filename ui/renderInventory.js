@@ -2,6 +2,7 @@
 // [FIX] ไม่ import player จาก data/player.js (ไฟล์นั้นไม่มี)
 //       รับ inventory array และ scenario เป็น parameter แทน
 // [FIX] showComboPreview และ applyGlowToItems เรียกจาก effects.js
+// [FIX] แก้ HTML string ที่มี \n ที่ไม่เหมาะสม
 
 import { showComboPreview, playSound } from "./effects.js";
 import { checkCombo }                 from "../engine/comboEngine.js";
@@ -33,7 +34,7 @@ export function renderInventory(inventory = [], scenario = null, onSelectionChan
 
   // Item buttons
   inventory.forEach(item => {
-    const btn = createItemButton(item, scenario);
+    const btn = createItemButton(item, _currentScenario);
     grid.appendChild(btn);
   });
 }
@@ -47,7 +48,8 @@ function createPhoneButton() {
   btn.dataset.id = "__phone__";
   btn.innerHTML = `
     <div class="bag-icon">📱</div>
-    <div class="bag-name" style="color:#54a0ff;font-size:8px;">มือถือ</div>\n    <div class="bag-item-weight" style="font-size:8px;color:#9fd;">ประยุกต์</div>
+    <div class="bag-name" style="color:#54a0ff;font-size:8px;">มือถือ</div>
+    <div class="bag-item-weight" style="font-size:8px;color:#9fd;">ประยุกต์</div>
   `;
   btn.addEventListener("click", () => toggleItemSelect({ id: "__phone__", nameTh: "มือถือ", weight: 0, tags: [] }, btn));
   return btn;
@@ -71,7 +73,6 @@ function createItemButton(item, scenario) {
     <div class="bag-name">${item.nameTh || item.id}</div>
     <div class="bag-item-weight" style="font-size:8px;color:#888;">${item.weight}kg · ${getUseTypeLabel(item)}</div>
   `;
-
 
   btn.addEventListener("click", () => toggleItemSelect(item, btn));
   return btn;

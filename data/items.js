@@ -1,8 +1,9 @@
-// inventory.js
+// items.js
 
 export const itemsData = {
   // === CATEGORY: FOOD & WATER ===
   water: {
+    id: "water",
     nameTh: "น้ำดื่ม (3 ลิตร)",
     nameJp: "飲料水",
     category: "food_water",
@@ -10,23 +11,26 @@ export const itemsData = {
     emoji: "💧",
     tags: ["direct", "combo", "clean"]
   },
-    water_bottle: {
+  water_bottle: {
+    id: "water_bottle",
     nameTh: "ขวดน้ำเปล่า",
     nameJp: "ボトル",
     category: "food_water",
     weight: 0.05,
     emoji: "🧴",
-    tags: ["direct", "combo","tools","clean" ]
+    tags: ["direct", "combo", "tools", "clean"]
   },
   high_cal: {
+    id: "high_cal",
     nameTh: "อาหารพลังงานสูง/โปรตีนบาร์",
     nameJp: "高カロリー食",
     category: "food_water",
     weight: 0.4,
     emoji: "🥜",
-    tags: ["direct", "social","mental"]
+    tags: ["direct", "social", "mental"]
   },
   ready_eat: {
+    id: "ready_eat",
     nameTh: "อาหารกระป๋อง/พร้อมทาน",
     nameJp: "レトルト食品",
     category: "food_water",
@@ -34,14 +38,17 @@ export const itemsData = {
     emoji: "🥫",
     tags: ["direct", "combo"]
   },
-  chocolate: { 
-    nameTh: "ช็อกโกแลตแท่ง (ให้พลังงานและคลายเครียด)", 
-    nameJp: "チョコレート", 
-    category: "food_water", 
-    weight: 0.1, emoji: "🍫", 
-    tags: ["direct", "mental"] 
+  chocolate: {
+    id: "chocolate",
+    nameTh: "ช็อกโกแลตแท่ง (ให้พลังงานและคลายเครียด)",
+    nameJp: "チョコレート",
+    category: "food_water",
+    weight: 0.1,
+    emoji: "🍫",
+    tags: ["direct", "mental"]
   },
   candy: {
+    id: "candy",
     nameTh: "ลูกอมแก้เครียด/เพิ่มน้ำตาล",
     nameJp: "飴/砂糖",
     category: "food_water",
@@ -50,6 +57,7 @@ export const itemsData = {
     tags: ["social", "mental"]
   },
   coffee: {
+    id: "coffee",
     nameTh: "กาแฟซองสำเร็จรูป",
     nameJp: "インスタントコーヒー",
     category: "food_water",
@@ -58,6 +66,7 @@ export const itemsData = {
     tags: ["social"]
   },
   foil: {
+    id: "foil",
     nameTh: "ฟอยล์ห่ออาหาร/เก็บความร้อน",
     nameJp: "アルミホイル",
     category: "food_water",
@@ -66,6 +75,7 @@ export const itemsData = {
     tags: ["combo"]
   },
   dry_milk: {
+    id: "dry_milk",
     nameTh: "นมผงชงพกพาสำหรับเด็ก",
     nameJp: "粉ミルク",
     category: "food_water",
@@ -76,6 +86,7 @@ export const itemsData = {
 
   // === CATEGORY: MEDICAL & HYGIENE ===
   personal_med: {
+    id: "personal_med",
     nameTh: "ยาประจำตัว",
     nameJp: "常備薬",
     category: "medical",
@@ -84,7 +95,8 @@ export const itemsData = {
     tags: ["direct"]
   },
   common_med: {
-    nameTh: "ยาสามัญประจำบ้าน/ยาลดไข้",
+    id: "common_med",
+    nameTh: "ยาสามัญปร��จำบ้าน/ยาลดไข้",
     nameJp: "一般医薬品",
     category: "medical",
     weight: 0.2,
@@ -92,6 +104,7 @@ export const itemsData = {
     tags: ["social", "direct"]
   },
   first_aid: {
+    id: "first_aid",
     nameTh: "ชุดอุปกรณ์ปฐมพยาบาล",
     nameJp: "救急箱",
     category: "medical",
@@ -100,6 +113,7 @@ export const itemsData = {
     tags: ["direct", "social"]
   },
   mask: {
+    id: "mask",
     nameTh: "หน้ากากอนามัยกันฝุ่นซิลิกา",
     nameJp: "N95マスク",
     category: "medical",
@@ -108,6 +122,7 @@ export const itemsData = {
     tags: ["direct"]
   },
   hand_gel: {
+    id: "hand_gel",
     nameTh: "เจลแอลกอฮอล์ล้างมือ",
     nameJp: "消毒ジェル",
     category: "medical",
@@ -115,23 +130,26 @@ export const itemsData = {
     emoji: "🧴",
     tags: ["clean"]
   },
-  soap: { 
-    nameTh: "สบู่ก้อน/สบู่เหลวพกพา", 
-    nameJp: "携帯石鹸", 
-    category: "medical", 
-    weight: 0.1, 
-    emoji: "🧼", 
-    tags: ["clean", "combo"] 
+  soap: {
+    id: "soap",
+    nameTh: "สบู่ก้อน/สบู่เหลวพกพา",
+    nameJp: "携帯石鹸",
+    category: "medical",
+    weight: 0.1,
+    emoji: "🧼",
+    tags: ["clean", "combo"]
   },
-  dry_shampoo: { 
-    nameTh: "ดรายแชมพู (ไม่ต้องใช้น้ำ)", 
-    nameJp: "ドライシャンプー", 
-    category: "medical", 
-    weight: 0.2, 
-    emoji: "🧴", 
-    tags: ["clean", "mental"] 
+  dry_shampoo: {
+    id: "dry_shampoo",
+    nameTh: "ดรายแชมพู (ไม่ต้องใช้น้ำ)",
+    nameJp: "ドライシャンプー",
+    category: "medical",
+    weight: 0.2,
+    emoji: "🧴",
+    tags: ["clean", "mental"]
   },
   wipes: {
+    id: "wipes",
     nameTh: "ทิชชู่เปียกทำความสะอาด",
     nameJp: "ウェットティッシュ",
     category: "medical",
@@ -140,6 +158,7 @@ export const itemsData = {
     tags: ["clean", "social"]
   },
   tissues: {
+    id: "tissues",
     nameTh: "กระดาษทิชชู่แห้ง",
     nameJp: "ティッシュペーパー",
     category: "medical",
@@ -148,6 +167,7 @@ export const itemsData = {
     tags: ["clean"]
   },
   portable_toilet: {
+    id: "portable_toilet",
     nameTh: "ถุงสุขาพกพาฉุกเฉิน",
     nameJp: "携帯トイレ",
     category: "medical",
@@ -156,6 +176,7 @@ export const itemsData = {
     tags: ["direct", "social"]
   },
   toothbrush: {
+    id: "toothbrush",
     nameTh: "แปรงและยาสีฟัน",
     nameJp: "歯ブラシセット",
     category: "medical",
@@ -164,6 +185,7 @@ export const itemsData = {
     tags: ["clean"]
   },
   sanitary: {
+    id: "sanitary",
     nameTh: "ผ้าอนามัย",
     nameJp: "生理用品",
     category: "medical",
@@ -172,6 +194,7 @@ export const itemsData = {
     tags: ["social", "combo"]
   },
   cooling_sheet: {
+    id: "cooling_sheet",
     nameTh: "แผ่นเจลลดไข้/ลดความร้อน",
     nameJp: "冷却シート",
     category: "medical",
@@ -182,6 +205,7 @@ export const itemsData = {
 
   // === CATEGORY: COMMUNICATION & LIGHT ===
   flashlight: {
+    id: "flashlight",
     nameTh: "ไฟฉาย LED ส่องสว่าง",
     nameJp: "懐中電灯",
     category: "comm",
@@ -190,6 +214,7 @@ export const itemsData = {
     tags: ["direct", "combo"]
   },
   batteries: {
+    id: "batteries",
     nameTh: "ถ่านไฟฉายสำรอง",
     nameJp: "予備電池",
     category: "comm",
@@ -198,6 +223,7 @@ export const itemsData = {
     tags: ["combo"]
   },
   radio: {
+    id: "radio",
     nameTh: "วิทยุพกพาฟังคลื่น AM/FM",
     nameJp: "携帯ラジオ",
     category: "comm",
@@ -206,6 +232,7 @@ export const itemsData = {
     tags: ["direct", "social"]
   },
   whistle: {
+    id: "whistle",
     nameTh: "นกหวีดสากลขอความช่วยเหลือ",
     nameJp: "ホイッスル",
     category: "comm",
@@ -214,14 +241,16 @@ export const itemsData = {
     tags: ["direct", "social"]
   },
   cash: {
+    id: "cash",
     nameTh: "เงินสดและเหรียญ 10-100 เยน",
     nameJp: "現金と硬貨",
     category: "comm",
     weight: 0.2,
     emoji: "🪙",
-    tags: ["social", "combo","direct"]
+    tags: ["social", "combo", "direct"]
   },
   paper_map: {
+    id: "paper_map",
     nameTh: "แผนที่กระดาษจุดอพยพประจำเขต",
     nameJp: "防災地図",
     category: "comm",
@@ -230,6 +259,7 @@ export const itemsData = {
     tags: ["social", "direct", "combo"]
   },
   powerbank: {
+    id: "powerbank",
     nameTh: "พาวเวอร์แบงก์ชาร์จมือถือ",
     nameJp: "モバイルバッテリー",
     category: "comm",
@@ -240,6 +270,7 @@ export const itemsData = {
 
   // === CATEGORY: CLOTHING & GEAR ===
   helmet: {
+    id: "helmet",
     nameTh: "หมวกกันน็อกกันแรงกระแทก",
     nameJp: "防災ヘルメット",
     category: "clothing",
@@ -247,15 +278,17 @@ export const itemsData = {
     emoji: "🪖",
     tags: ["direct", "combo"]
   },
-  goggles: { 
-    nameTh: "แว่นตานิรภัยกันเศษฝุ่นอาคารถล่ม", 
-    nameJp: "保護メガネ", 
-    category: "clothing", 
-    weight: 0.1, 
-    emoji: "🥽", 
-    tags: ["direct", "combo"] 
+  goggles: {
+    id: "goggles",
+    nameTh: "แว่นตานิรภัยกันเศษฝุ่นอาคารถล่ม",
+    nameJp: "保護メガネ",
+    category: "clothing",
+    weight: 0.1,
+    emoji: "🥽",
+    tags: ["direct", "combo"]
   },
   gunte: {
+    id: "gunte",
     nameTh: "ถุงมือผ้าหนากันกระจกบาด",
     nameJp: "防刃軍手",
     category: "clothing",
@@ -264,6 +297,7 @@ export const itemsData = {
     tags: ["direct", "combo"]
   },
   shoes: {
+    id: "shoes",
     nameTh: "รองเท้าพื้นหนาพิเศษ",
     nameJp: "厚底安全靴",
     category: "clothing",
@@ -272,6 +306,7 @@ export const itemsData = {
     tags: ["direct", "combo"]
   },
   blanket: {
+    id: "blanket",
     nameTh: "ผ้าห่มฟอยล์เก็บความร้อน",
     nameJp: "アルミブランケット",
     category: "clothing",
@@ -280,6 +315,7 @@ export const itemsData = {
     tags: ["direct", "combo"]
   },
   raincoat: {
+    id: "raincoat",
     nameTh: "เสื้อกันฝนพกพา",
     nameJp: "レインコート",
     category: "clothing",
@@ -288,22 +324,25 @@ export const itemsData = {
     tags: ["direct"]
   },
   kairo: {
+    id: "kairo",
     nameTh: "ถุงทรายร้อนประคบอุ่นร่างกาย",
     nameJp: "使い捨てカイロ",
     category: "clothing",
     weight: 0.1,
     emoji: "🔥",
-    tags: ["social","direct", "combo"]
+    tags: ["social", "direct", "combo"]
   },
   clothes: {
+    id: "clothes",
     nameTh: "เสื้อผ้าและชุดชั้นในสำรอง",
     nameJp: "着替え肌着",
     category: "clothing",
     weight: 1.0,
     emoji: "👕",
-    tags: ["social","direct", "combo"]
+    tags: ["social", "direct", "combo"]
   },
   towel: {
+    id: "towel",
     nameTh: "ผ้าเช็ดตัวผืนใหญ่",
     nameJp: "大判タオル",
     category: "clothing",
@@ -312,16 +351,18 @@ export const itemsData = {
     tags: ["combo"]
   },
   makeup_kit: {
+    id: "makeup_kit",
     nameTh: "ชุดเครื่องสำอางและสกินแคร์เซ็ตใหญ่",
-    nameJp: "เมคอัพชุดใหญ่", // เมคอัพเซ็ต
+    nameJp: "เมคอัพชุดใหญ่",
     category: "mental",
-    weight: 0.8, // หนักเกือบกิโลฯ เอาไว้ดัดหลังคนหยิบเพลิน
+    weight: 0.8,
     emoji: "💄",
     tags: ["mental"]
   },
 
   // === CATEGORY: SURVIVAL TOOLS ===
   knife: {
+    id: "knife",
     nameTh: "มีดพับอเนกประสงค์ (Multi-tool)",
     nameJp: "万能ナイフ",
     category: "tools",
@@ -330,6 +371,7 @@ export const itemsData = {
     tags: ["direct", "combo"]
   },
   tape: {
+    id: "tape",
     nameTh: "เทปกาวผ้าหนาสารพัดประโยชน์",
     nameJp: "布ガムテープ",
     category: "tools",
@@ -338,6 +380,7 @@ export const itemsData = {
     tags: ["combo"]
   },
   trash_bag: {
+    id: "trash_bag",
     nameTh: "ถุงขยะหนาใบใหญ่",
     nameJp: "防臭ゴミ袋",
     category: "tools",
@@ -346,6 +389,7 @@ export const itemsData = {
     tags: ["combo", "social", "tools", "clean"]
   },
   rope: {
+    id: "rope",
     nameTh: "เชือกกู้ภัยหนา 10 เมตร",
     nameJp: "救助ロープ",
     category: "tools",
@@ -354,6 +398,7 @@ export const itemsData = {
     tags: ["direct", "combo"]
   },
   wrap: {
+    id: "wrap",
     nameTh: "พลาสติกแร็ปพันแผล/ถนอมอาหาร",
     nameJp: "食品用ラップ",
     category: "tools",
@@ -362,6 +407,7 @@ export const itemsData = {
     tags: ["combo"]
   },
   lighter: {
+    id: "lighter",
     nameTh: "ไฟแช็กจุดไฟฉุกเฉิน",
     nameJp: "ライター",
     category: "tools",
@@ -370,6 +416,7 @@ export const itemsData = {
     tags: ["direct", "combo"]
   },
   extinguisher: {
+    id: "extinguisher",
     nameTh: "สเปรย์ดับเพลิงขนาดพกพา",
     nameJp: "小型消火スプレー",
     category: "tools",
@@ -378,6 +425,7 @@ export const itemsData = {
     tags: ["direct", "combo"]
   },
   crowbar: {
+    id: "crowbar",
     nameTh: "ชะแลงเหล็กขนาดสั้นงัดประตู",
     nameJp: "小型バール",
     category: "tools",
@@ -386,6 +434,7 @@ export const itemsData = {
     tags: ["direct", "combo"]
   },
   pliers: {
+    id: "pliers",
     nameTh: "คีมตัดลวด/เครื่องมือช่าง",
     nameJp: "ペンチ",
     category: "tools",
@@ -393,7 +442,8 @@ export const itemsData = {
     emoji: "🔧",
     tags: ["direct", "combo"]
   },
- marker_pen: {
+  marker_pen: {
+    id: "marker_pen",
     nameTh: "ปากกาเคมี",
     nameJp: "マーカーペン",
     category: "tools",
@@ -404,6 +454,7 @@ export const itemsData = {
 
   // === CATEGORY: MENTAL SUPPORT ===
   docs: {
+    id: "docs",
     nameTh: "สำเนาเอกสารสำคัญ/พาสปอร์ต",
     nameJp: "重要書類コピー",
     category: "mental",
@@ -412,6 +463,7 @@ export const itemsData = {
     tags: ["direct"]
   },
   notepad: {
+    id: "notepad",
     nameTh: "สมุดบันทึกและปากกาเขียนข้อมูล",
     nameJp: "メモ帳とペン",
     category: "mental",
@@ -420,6 +472,7 @@ export const itemsData = {
     tags: ["social"]
   },
   pillow: {
+    id: "pillow",
     nameTh: "หมอนรองคอเป่าลม",
     nameJp: "エアーピロー",
     category: "mental",
@@ -428,6 +481,7 @@ export const itemsData = {
     tags: ["mental"]
   },
   ear_mask: {
+    id: "ear_mask",
     nameTh: "ที่อุดหูและผ้าปิดตา",
     nameJp: "耳栓・アイマスク",
     category: "mental",
@@ -436,6 +490,7 @@ export const itemsData = {
     tags: ["mental"]
   },
   cards: {
+    id: "cards",
     nameTh: "ไพ่/ของเล่นแก้เครียดกลุ่ม",
     nameJp: "トランプゲーム",
     category: "mental",
@@ -444,6 +499,7 @@ export const itemsData = {
     tags: ["social", "mental"]
   },
   family_photo: {
+    id: "family_photo",
     nameTh: "รูปถ่ายครอบครัว/คนรัก",
     nameJp: "家族の写真",
     category: "mental",
@@ -452,6 +508,7 @@ export const itemsData = {
     tags: ["social", "mental"]
   },
   book: {
+    id: "book",
     nameTh: "หนังสืออ่านเล่นคลายเครียด",
     nameJp: "文庫本",
     category: "mental",
@@ -460,6 +517,7 @@ export const itemsData = {
     tags: ["mental", "combo"]
   },
   earphones: {
+    id: "earphones",
     nameTh: "หูฟังแบบสายตัดเสียงรบกวน",
     nameJp: "イヤホン",
     category: "mental",
@@ -468,48 +526,51 @@ export const itemsData = {
     tags: ["mental"]
   },
   amulet: {
+    id: "amulet",
     nameTh: "ยันต์แคล้วคลาดปลุกเสก",
     nameJp: "お守り (ジョークグッズ)",
     category: "mental",
-    weight: 0.01, 
+    weight: 0.01,
     emoji: "📜",
     tags: ["mental"]
-    },
+  },
   bluetooth_speaker: {
+    id: "bluetooth_speaker",
     nameTh: "ลำโพงบลูทูธพกพา (ไฟ LED วิบวับ)",
     nameJp: "ポータブルスピーカー",
     category: "mental",
-    weight: 0.6, 
+    weight: 0.6,
     emoji: "🔊",
     tags: ["mental"]
   },
   japanese_textbook: {
+    id: "japanese_textbook",
     nameTh: "หนังสือเรียนภาษาญี่ปุ่น (มินนะ โนะ นิฮงโกะ เล่มหนา)",
     nameJp: "日本語の教科書",
     category: "mental",
-    weight: 0.7, 
+    weight: 0.7,
     emoji: "📘",
-    tags: ["mental","combo"]
+    tags: ["mental", "combo"]
   },
   sensei_photo: {
+    id: "sensei_photo",
     nameTh: "รูปถ่ายสองเซนเซสุดน่ารัก (ช่วยฮีลใจยามวิกฤต)",
     nameJp: "ソーン先生の写真",
     category: "mental",
-    weight: 0.05, // เบามาก พกง่าย
-    emoji: "📸", // หรือจะใช้ 🖼️ ก็ได้ครับ
-    tags: ["mental","combo"]
+    weight: 0.05,
+    emoji: "📸",
+    tags: ["mental", "combo"]
   },
   pet_food: {
+    id: "pet_food",
     nameTh: "อาหารสัตว์เลี้ยงสำเร็จรูป (สำหรับสุนัขและแมว)",
     nameJp: "ペットフード",
     category: "food_water",
-    weight: 0.4, // น้ำหนักปานกลางพอให้เด็กๆ ต้องคิดคำนวณ
-    emoji: "🍖", // หรือจะใช้ 🦮 / 🐈 ก็ได้ครับ
-    tags: ["social", "combo","mental"]
-  },
+    weight: 0.4,
+    emoji: "🍖",
+    tags: ["social", "combo", "mental"]
+  }
 };
-
-
 
 // ใช้เพื่อบอกนักเรียนว่าไอเทมใดใช้ตรงสถานการณ์หรือใช้ประยุกต์
 // direct = ใช้ได้ตรงตัว, adapt = เหมาะกับการประยุกต์/คอมโบ, both = ใช้ได้ทั้งสองแบบ
@@ -533,6 +594,7 @@ function enrichItemUseTypes() {
 
   // โทรศัพท์ไม่ได้อยู่ในกระเป๋า แต่ใช้เป็นไอเทมประยุกต์ในบางสถานการณ์
   itemsData.__phone__ = {
+    id: "__phone__",
     nameTh: "มือถือ",
     nameJp: "スマホ",
     category: "comm",
