@@ -54,8 +54,8 @@ export const comboDatabase = [
 
   // MENTAL
   { id: "blanket_comfort",  items: ["blanket",  "candy"],       tags: ["panic","stress","mental"],scoreBonus: 12, resultName: "Comfort Kit",         description: "ผ้าห่มอบอุ่น+ลูกอมลดเครียด" },
-  { id: "calming_kit"",  items: ["common_med",  "candy"],       tags: ["panic","stress","mental"],scoreBonus: 12, resultName: "Calming Kit",         description: "ชุดลดความตื่นตระหนก" },
-  { id: "booster_pack"",  items: ["coffee",  "ready_eat"],       tags: ["panic","stress","mental"],scoreBonus: 15, resultName: "Booster Pack",         description: "ชุดเสบียงบำรุงขวัญ" },
+  { id: "calming_kit",  items: ["common_med",  "candy"],       tags: ["panic","stress","mental"],scoreBonus: 12, resultName: "Calming Kit",         description: "ชุดลดความตื่นตระหนก" },
+  { id: "booster_pack",  items: ["coffee",  "ready_eat"],       tags: ["panic","stress","mental"],scoreBonus: 15, resultName: "Booster Pack",         description: "ชุดเสบียงบำรุงขวัญ" },
   { id: "notepad_family",   items: ["notepad",  "family_photo"],tags: ["mental","stress"],     scoreBonus: 14, resultName: "Memory Support",         description: "เขียนสมุด+ดูรูปครอบครัวคลายใจ" },
   { id: "easter_eggs",   items: ["sensei_photo",  "japanese_textbook"],tags: ["mental","stress"],     scoreBonus: 20, resultName: "The "Sensei" Easter Eggs",         description: "สองเซนเซและหนังสืออะกิโกะจะทำให้นึกถึงตอนเรียนทุกอย่างออก" },
 ];
