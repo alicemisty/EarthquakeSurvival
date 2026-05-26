@@ -311,6 +311,14 @@ export const itemsData = {
     emoji: "🧣",
     tags: ["combo"]
   },
+  makeup_kit: {
+    nameTh: "ชุดเครื่องสำอางและสกินแคร์เซ็ตใหญ่",
+    nameJp: "เมคอัพชุดใหญ่", // เมคอัพเซ็ต
+    category: "mental",
+    weight: 0.8, // หนักเกือบกิโลฯ เอาไว้ดัดหลังคนหยิบเพลิน
+    emoji: "💄",
+    tags: ["mental"]
+  },
 
   // === CATEGORY: SURVIVAL TOOLS ===
   knife: {
@@ -458,7 +466,47 @@ export const itemsData = {
     weight: 0.05,
     emoji: "🎧",
     tags: ["mental"]
-  }
+  },
+  amulet: {
+    nameTh: "ยันต์แคล้วคลาดปลุกเสก",
+    nameJp: "お守り (ジョークグッズ)",
+    category: "mental",
+    weight: 0.01, 
+    emoji: "📜",
+    tags: ["mental"]
+    },
+  bluetooth_speaker: {
+    nameTh: "ลำโพงบลูทูธพกพา (ไฟ LED วิบวับ)",
+    nameJp: "ポータブルスピーカー",
+    category: "mental",
+    weight: 0.6, 
+    emoji: "🔊",
+    tags: ["mental"]
+  },
+  japanese_textbook: {
+    nameTh: "หนังสือเรียนภาษาญี่ปุ่น (มินนะ โนะ นิฮงโกะ เล่มหนา)",
+    nameJp: "日本語の教科書",
+    category: "mental",
+    weight: 0.7, 
+    emoji: "📘",
+    tags: ["mental","combo"]
+  },
+  sensei_photo: {
+    nameTh: "รูปถ่ายสองเซนเซสุดน่ารัก (ช่วยฮีลใจยามวิกฤต)",
+    nameJp: "ソーン先生の写真",
+    category: "mental",
+    weight: 0.05, // เบามาก พกง่าย
+    emoji: "📸", // หรือจะใช้ 🖼️ ก็ได้ครับ
+    tags: ["mental","combo"]]
+  },
+  pet_food: {
+    nameTh: "อาหารสัตว์เลี้ยงสำเร็จรูป (สำหรับสุนัขและแมว)",
+    nameJp: "ペットフード",
+    category: "food_water",
+    weight: 0.4, // น้ำหนักปานกลางพอให้เด็กๆ ต้องคิดคำนวณ
+    emoji: "🍖", // หรือจะใช้ 🦮 / 🐈 ก็ได้ครับ
+    tags: ["social", "combo"]
+  },
 };
 
 
