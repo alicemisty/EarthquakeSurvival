@@ -60,6 +60,30 @@ export function renderScenario(scenario, onDone) {
     scenario,
     (selected) => { /* real-time combo preview handled inside renderInventory */ }
   );
+// ==========================================
+// NEW: Enable item selection in gameplay
+// ==========================================
+setTimeout(() => {
+  const buttons = document.querySelectorAll(".backpack-item-btn");
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const itemId = btn.dataset.itemId;
+
+      // 1) เลือกไอเทมใน inventoryEngine
+      const selected = _player.inventoryEngine?.selectItem(itemId);
+
+      // 2) ล้างสถานะเก่า
+      buttons.forEach(b => b.classList.remove("selected-item"));
+
+      // 3) ใส่สถานะใหม่
+      btn.classList.add("selected-item");
+
+      // 4) แสดงคอมโบแบบเรียลไทม์
+      showComboPreview(selected);
+    });
+  });
+}, 50);
 
   // Actions
   renderActions(scenario);
