@@ -10,6 +10,14 @@ export const itemsData = {
     emoji: "💧",
     tags: ["direct", "combo", "clean"]
   },
+    water_bottle: {
+    nameTh: "ขวดน้ำเปล่า",
+    nameJp: "ボトル",
+    category: "food_water",
+    weight: 0.05,
+    emoji: "🧴",
+    tags: ["direct", "combo","tools","clean" ]
+  },
   high_cal: {
     nameTh: "อาหารพลังงานสูง/โปรตีนบาร์",
     nameJp: "高カロリー食",
@@ -344,6 +352,14 @@ export const itemsData = {
     category: "tools",
     weight: 0.4,
     emoji: "🔧",
+    tags: ["direct", "combo"]
+  },
+ marker_pen: {
+    nameTh: "ปากกาเคมี",
+    nameJp: "マーカーペン",
+    category: "tools",
+    weight: 0.1,
+    emoji: "🖊",
     tags: ["direct", "combo"]
   },
 
