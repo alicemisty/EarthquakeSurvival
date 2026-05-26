@@ -111,7 +111,13 @@ document.getElementById("startBtn").addEventListener("click", () => {
 // SCREEN 2 : STATUS
 // ==========================================
 function renderStatusScreen() {
-  const jobNames = { fighter: "นักมวย 🥊", boxer: "นักมวย 🥊", speaker: "นักพูด 📢", genius: "อัจฉริยะ 🧠" };
+  const jobNames = {
+    fighter: "นักมวย 🥊",
+    boxer:   "นักมวย 🥊",
+    speaker: "นักพูด 📢",
+    genius:  "อัจฉริยะ 🧠"
+  };
+
   document.getElementById("statusOutput").innerHTML = `
     <table style="width:100%; border-collapse:collapse; font-size:14px; line-height:2;">
       <tr><td>👤 ชื่อ</td><td><strong>${player.name}</strong></td></tr>
