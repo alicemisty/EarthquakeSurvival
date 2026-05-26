@@ -266,7 +266,7 @@ export const scenarios = [
     "jp": "【照明の落下】大きな照明が揺れています。",
     "th": "โคมไฟขนาดใหญ่เหนือศีรษะกำลังแกว่งและอาจหล่น",
     "answerMode": "inventory",
-    "image": "images/p2_chandelier.jpg",
+    "image": "images/p2_chandelier.png",
     "coreItems": [
       "helmet"
     ],
@@ -311,7 +311,7 @@ export const scenarios = [
     "jp": "【出口がふさがれた】棚が倒れて出口をふさいでいます。",
     "th": "ชั้นวางล้มขวางทางออกหลัก ต้องเปิดทางอย่างระวัง",
     "answerMode": "inventory",
-    "image": "images/p2_blocked_exit.jpg",
+    "image": "images/p2_blocked_exit.png",
     "coreItems": [
       "crowbar"
     ],
@@ -550,7 +550,7 @@ export const scenarios = [
     "jp": "【群衆事故】人が一方向へ押し寄せています。",
     "th": "ฝูงชนกำลังเบียดไปทางเดียวกันจนเสี่ยงล้มทับกัน",
     "answerMode": "inventory",
-    "image": "images/p2_stampede.jpg",
+    "image": "images/p2_stampede.png",
     "coreItems": [
       "whistle"
     ],
@@ -595,7 +595,7 @@ export const scenarios = [
     "jp": "【サイレン】大きな警報音が鳴っています。",
     "th": "เสียงไซเรนดังขึ้น หลายคนตกใจและไม่รู้จะไปทางไหน",
     "answerMode": "text",
-    "image": "images/p2_siren.jpg",
+    "image": "images/p2_siren.png",
     "choices": [
       {
         "text": "มองป้าย Emergency Exit และตั้งสติ",
@@ -628,7 +628,7 @@ export const scenarios = [
     "th": "หลังแรงสั่นหลักหยุดไม่นาน เกิดอาฟเตอร์ช็อกตามมา",
     
     "answerMode": "text",
-    "image": "images/p3_aftershock.jpg",
+    "image": "images/p3_aftershock.png",
     "choices": [
       {
         "text": "หยุด หมอบต่ำ และป้องกันศีรษะอีกครั้ง",
@@ -661,7 +661,7 @@ export const scenarios = [
     "th": "ได้กลิ่นแก๊สรั่วหลังแรงสั่นหยุด",
     
     "answerMode": "inventory",
-    "image": "images/p3_gas.jpg",
+    "image": "images/p3_gas.png",
     "coreItems": [
       "gunte"
     ],
@@ -706,7 +706,7 @@ export const scenarios = [
     "jp": "【情報遮断】ネットがつながりません。",
     "th": "อินเทอร์เน็ตล่ม โทรศัพท์โทรออกยาก และข่าวลือเริ่มกระจาย",
     "answerMode": "inventory",
-    "image": "images/p3_radio.jpg",
+    "image": "images/p3_radio.png",
     "coreItems": [
       "radio"
     ],
@@ -753,7 +753,7 @@ export const scenarios = [
     "th": "มีคนติดอยู่ใต้ซากหรือเฟอร์นิเจอร์หนัก",
     
     "answerMode": "inventory",
-    "image": "images/p3_rescue.jpg",
+    "image": "images/p3_rescue.png",
     "coreItems": [
       "crowbar",
       "rope"
@@ -800,7 +800,7 @@ export const scenarios = [
     "th": "เพื่อนสติแตก หายใจเร็ว และไม่ยอมเดินต่อ",
     
     "answerMode": "inventory",
-    "image": "images/p3_mental.jpg",
+    "image": "images/p3_mental.png",
     "coreItems": [
       "family_photo",
       "candy"
@@ -855,7 +855,7 @@ export const scenarios = [
     "jp": "【非常階段の混雑】階段に人が集中しています。",
     "th": "บันไดหนีไฟแน่น ทุกคนรีบลงพร้อมกัน",
     "answerMode": "text",
-    "image": "images/p3_stair.jpg",
+    "image": "images/p3_stair.png",
     "choices": [
       {
         "text": "เดินชิดด้านหนึ่ง จับราว และไม่เบียด",
@@ -888,7 +888,7 @@ export const scenarios = [
     "th": "ท่อน้ำแตก น้ำท่วมพื้นใกล้ปลั๊กและสายไฟ",
 
     "answerMode": "text",
-    "image": "images/p3_pipe.jpg",
+    "image": "images/p3_pipe.png",
     "choices": [
       {
         "text": "หลบพื้นที่เปียกและเตือนคนอื่นเรื่องไฟฟ้า",
@@ -920,7 +920,7 @@ export const scenarios = [
     "jp": "【扉の向こうの声】別室から助けを求める声がします。",
     "th": "ได้ยินเสียงขอความช่วยเหลือจากอีกห้องหนึ่ง",
     "answerMode": "text",
-    "image": "images/p3_door.jpg",
+    "image": "images/p3_door.png",
     "choices": [
       {
         "text": "ตอบกลับ ถามอาการ และแจ้งกู้ภัยโดยไม่เสี่ยงเข้าไป",
@@ -952,7 +952,7 @@ export const scenarios = [
     "jp": "【津波の噂】海沿いの地域で津波情報が流れています。",
     "th": "มีข่าวเตือนสึนามิในพื้นที่ใกล้ทะเล ต้องยืนยันเส้นทางอพยพ",
     "answerMode": "inventory",
-    "image": "images/p3_tsunami.jpg",
+    "image": "images/p3_tsunami.png",
     "coreItems": [
       "paper_map",
       "radio"
@@ -998,7 +998,7 @@ export const scenarios = [
     "jp": "【救護の判断】けが人が複数います。",
     "th": "มีผู้บาดเจ็บหลายคนในพื้นที่เดียวกัน",
     "answerMode": "text",
-    "image": "images/p3_triage.jpg",
+    "image": "images/p3_triage.png",
     "choices": [
       {
         "text": "แจ้งเจ้าหน้าที่และช่วยตามความปลอดภัย",
@@ -1031,7 +1031,7 @@ export const scenarios = [
     "th": "ถนนมีเศษแก้วและสายไฟขาดพาดอยู่",
     
     "answerMode": "inventory",
-    "image": "images/p4_road.jpg",
+    "image": "images/p4_road.png",
     "coreItems": [
       "shoes"
     ],
@@ -1088,7 +1088,7 @@ export const scenarios = [
     "jp": "【道路渋滞】車が動かず避難路をふさいでいます。",
     "th": "รถติดหนักและบางคันจอดขวางเส้นทางอพยพ",
     "answerMode": "text",
-    "image": "images/p4_traffic.jpg",
+    "image": "images/p4_traffic.png",
     "choices": [
       {
         "text": "เดินเท้าตามเส้นทางอพยพที่ปลอดภัย",
@@ -1120,7 +1120,7 @@ export const scenarios = [
     "jp": "【橋の通行止め】橋にひびが入り閉鎖されています。",
     "th": "สะพานมีรอยร้าวและถูกปิด แต่เป็นทางลัดไปศูนย์อพยพ",
     "answerMode": "text",
-    "image": "images/p4_bridge.jpg",
+    "image": "images/p4_bridge.png",
     "choices": [
       {
         "text": "เดินอ้อมตามเส้นทางที่ประกาศว่าปลอดภัย",
@@ -1152,7 +1152,7 @@ export const scenarios = [
     "jp": "【迷子】子どもが一人で泣いています。",
     "th": "พบเด็กหลงร้องไห้อยู่ริมทาง",
     "answerMode": "text",
-    "image": "images/p4_child.jpg",
+    "image": "images/p4_child.png",
     "choices": [
       {
         "text": "พาไปจุดอพยพและแจ้งเจ้าหน้าที่",
@@ -1184,7 +1184,7 @@ export const scenarios = [
     "jp": "【豪雨】強い雨で体温が下がり始めています。",
     "th": "ฝนตกหนัก เสื้อผ้าเริ่มเปียกและร่างกายเย็นลง",
     "answerMode": "inventory",
-    "image": "images/p4_rain.jpg",
+    "image": "images/p4_rain.png",
     "coreItems": [
       "raincoat"
     ],
@@ -1238,7 +1238,7 @@ export const scenarios = [
     "th": "ผู้สูงอายุล้มและเจ็บขา ไม่สามารถเดินต่อได้ดี",
 
     "answerMode": "inventory",
-    "image": "images/p4_elderly.jpg",
+    "image": "images/p4_elderly.png",
     "coreItems": [
       "first_aid"
     ],
@@ -1285,7 +1285,7 @@ export const scenarios = [
     "th": "กำแพงริมทางโยกแรงจาก aftershock และอาจล้ม",
     
     "answerMode": "text",
-    "image": "images/p4_wall.jpg",
+    "image": "images/p4_wall.png",
     "choices": [
       {
         "text": "ออกห่างกำแพงและไปพื้นที่โล่ง",
@@ -1318,7 +1318,7 @@ export const scenarios = [
     "th": "นึกได้ว่าลืมของสำคัญไว้ที่บ้านที่อาจเสียหาย",
     
     "answerMode": "text",
-    "image": "images/p4_property.jpg",
+    "image": "images/p4_property.png",
     "choices": [
       {
         "text": "ไม่ย้อนกลับ ไปศูนย์อพยพก่อน",
@@ -1351,7 +1351,7 @@ export const scenarios = [
     "th": "น้ำดื่มในศูนย์อพยพมีจำกัด ต้องจัดการให้พอ",
    
     "answerMode": "inventory",
-    "image": "images/p5_water.jpg",
+    "image": "images/p5_water.png",
     "coreItems": [
       "water"
     ],
@@ -1397,7 +1397,7 @@ export const scenarios = [
     "th": "เกิดการโต้เถียงเรื่องพื้นที่นอนในศูนย์อพยพ",
    
     "answerMode": "text",
-    "image": "images/p5_space.jpg",
+    "image": "images/p5_space.png",
     "choices": [
       {
         "text": "ไกล่เกลี่ยและขอให้เจ้าหน้าที่จัดพื้นที่",
@@ -1430,7 +1430,7 @@ export const scenarios = [
     "th": "เด็กเล็กมีไข้ในศูนย์อพยพและร้องไห้ไม่หยุด",
    
     "answerMode": "inventory",
-    "image": "images/p5_baby.jpg",
+    "image": "images/p5_baby.png",
     "coreItems": [
       "common_med",
       "cooling_sheet"
@@ -1482,7 +1482,7 @@ export const scenarios = [
     "th": "รู้สึกเหมือนพื้นสั่นทั้งที่ไม่มีแรงสั่นจริง",
    
     "answerMode": "text",
-    "image": "images/p5_ptsd.jpg",
+    "image": "images/p5_ptsd.png",
     "choices": [
       {
         "text": "หายใจลึก ตรวจประกาศ และพูดคุยกับคนข้าง ๆ",
@@ -1515,7 +1515,7 @@ export const scenarios = [
     "th": "แบตมือถือใกล้หมด แต่ยังต้องใช้รับข่าวสารและติดต่อครอบครัว",
     
     "answerMode": "inventory",
-    "image": "images/p5_battery.jpg",
+    "image": "images/p5_battery.png",
     "coreItems": [
       "powerbank"
     ],
@@ -1561,7 +1561,7 @@ export const scenarios = [
     "th": "ข่าวปลอมในโซเชียลบอกให้คนย้ายศูนย์อพยพทันที",
 
     "answerMode": "inventory",
-    "image": "images/p5_fake_news.jpg",
+    "image": "images/p5_fake_news.png",
     "coreItems": [
       "radio"
     ],
@@ -1607,7 +1607,7 @@ export const scenarios = [
     "th": "ติดต่อครอบครัวไม่ได้และไม่รู้ว่าปลอดภัยหรือไม่",
    
     "answerMode": "inventory",
-    "image": "images/p5_missing.jpg",
+    "image": "images/p5_missing.png",
     "coreItems": [
       "notepad",
       "docs"
