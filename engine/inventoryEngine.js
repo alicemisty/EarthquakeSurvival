@@ -66,19 +66,37 @@ export class InventoryEngine {
   }
 
   // ------------------------------------------
-  // คะแนนความพร้อมก่อนเริ่มเกม
+ // คะแนนความพร้อมก่อนเริ่มเกม (นับตามความหลากหลายของหมวดหมู่)
   calculatePreparednessScore() {
     let score = 0;
+    
+    // ใช้ Set เพื่อล็อกว่าแท็กแต่ละหมวดหมู่จะให้คะแนนแค่ "ครั้งแรกครั้งเดียว"
+    const checkedTags = new Set();
+
     this.items.forEach(item => {
       const w = item.weight || 0;
-      if (item.tags?.includes("direct"))  score += 12;
-      if (item.tags?.includes("social"))  score += 8;
-      if (item.tags?.includes("combo"))   score += 6;
-      if (item.tags?.includes("clean"))   score += 5;
-      if (item.tags?.includes("mental"))  score += 4;
-      // ลดคะแนนถ้าของหนักมาก
+      
+      if (item.tags) {
+        item.tags.forEach(tag => {
+          // ถ้าเป็นแท็กหมวดหมู่ที่นักเรียนยังไม่เคยหยิบเลย ให้คะแนนทันที
+          if (!checkedTags.has(tag)) {
+            if (tag === "direct")  score += 10; // มีอุปกรณ์หลัก (เช่น ไฟฉาย/นกหวีด) เอาไป 10 คะแนน
+            if (tag === "social")  score += 10; // มีอุปกรณ์ช่วยผู้อื่น/ปฐมพยาบาล เอาไป 10 คะแนน
+            if (tag === "combo")   score += 10; // มีอุปกรณ์สายประยุกต์ เอาไป 10 คะแนน
+            if (tag === "clean")   score += 10; // มีอุปกรณ์สุขอนามัย เอาไป 10 คะแนน
+            if (tag === "mental")  score += 10; // มีอาหาร/ของบำรุงขวัญ เอาไป 10 คะแนน
+            
+            // บันทึกไว้ว่าได้คะแนนจากหมวดนี้ไปแล้ว ชิ้นต่อไปในหมวดเดิมจะไม่บวกเพิ่มอีก
+            checkedTags.add(tag); 
+          }
+        });
+      }
+
+      // 🎒 บทลงโทษส่วนตัว: ถ้าหยิบของชิ้นใหญ่เกิน 1.0 kg มา (เช่น ถังน้ำใหญ่) จะโดนหักความคล่องตัว ชิ้นละ 3 คะแนน
       if (w > 1.0) score -= 3;
     });
+
+    // คะแนนเต็มสูงสุดจะเป็น 50 คะแนนพอดี (5 หมวดหมู่ x 10 คะแนน) และไม่ต่ำกว่า 0
     return Math.max(0, score);
   }
 
@@ -88,3 +106,5 @@ export class InventoryEngine {
     return this.items.filter(i => (i.weight || 0) <= 0.1);
   }
 }
+
+
