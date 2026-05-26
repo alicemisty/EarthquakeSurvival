@@ -1154,14 +1154,7 @@ select:focus{
   margin: 4px 0 8px;
 }
 
-/* เมื่อมีการลากคลุมข้อความ หรือเลือกข้อความ */
-::selection {
-    background-color: #2b2b2b; /* เปลี่ยนพื้นหลังไฮไลท์เป็นสีเทาเข้ม/ดำ */
-    color: #ffffff;            /* ตัวอักษรด้านในเป็นสีขาว */
-}
-
-/* เพิ่มการดักสไตล์สำหรับเบราว์เซอร์ตระกูล Firefox */
-::-moz-selection {
-    background-color: #2b2b2b;
-    color: #ffffff;
+select, option {
+    background-color: #ffffff; /* พื้นหลังขาว */
+    color: #333333;            /* ตัวอักษรสีเทาเข้ม/ดำ */
 }
