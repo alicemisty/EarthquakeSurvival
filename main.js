@@ -102,6 +102,8 @@ document.getElementById("startBtn").addEventListener("click", () => {
 
   // Init inventory engine
   inventoryEngine = new InventoryEngine(player.maxCarryWeight);
+  player.inventoryEngine = inventoryEngine;
+
 
   switchScreen("loginScreen", "statusScreen");
   renderStatusScreen();
