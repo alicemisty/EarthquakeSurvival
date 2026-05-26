@@ -1155,6 +1155,6 @@ select:focus{
 }
 
 select, option {
-    background-color: #ffffff; /* พื้นหลังขาว */
-    color: #333333;            /* ตัวอักษรสีเทาเข้ม/ดำ */
+    background-color: #333333; /* พื้นหลังขาว */
+    color: #ffffff;            /* ตัวอักษรสีเทาเข้ม/ดำ */
 }
