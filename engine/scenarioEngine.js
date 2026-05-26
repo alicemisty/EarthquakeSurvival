@@ -81,7 +81,6 @@ export function buildTimeline() {
   const combinedTimeline = [...selectedItems, ...preparedQuizzes];
   return combinedTimeline.sort(() => Math.random() - 0.5);
 }
-}
 
 function pickRandom(arr, n) {
   return [...arr].sort(() => Math.random() - 0.5).slice(0, Math.min(n, arr.length));
