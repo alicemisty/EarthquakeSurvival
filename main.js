@@ -208,8 +208,8 @@ function renderPlacementScreen() {
   const choices = [
     { id: "door",     label: " ใกล้ประตูทางออกหลัก (Exit Door)",           bonus: 30, manaLoss: 0,  pocket: false },
     { id: "bedside",  label: " ข้างหัวเตียง / โต๊ะทำงาน (Bedside Area)",  bonus: 15, manaLoss: 15, pocket: false },
-    { id: "underbed", label: " ใต้เตียงส่วนลึก / หลังตู้ (Under Bed)",    bonus: 0,  manaLoss: 0,  pocket: true  },
-    { id: "closet",   label: " ในตู้เก็บของชั้นในสุด (Storage Closet)",    bonus: 0,  manaLoss: 0,  pocket: true  }
+    { id: "underbed", label: " ใต้เตียงส่วนลึก / หลังตู้ (Under Bed)",    bonus: 0,  manaLoss: 20,  pocket: true  },
+    { id: "closet",   label: " ในตู้เก็บของชั้นในสุด (Storage Closet)",    bonus: 0,  manaLoss: 25,  pocket: true  }
   ].sort(() => Math.random() - 0.5);
 
   choices.forEach(c => {
@@ -314,7 +314,7 @@ function finishGame() {
   // Rating
   let rating = "🏆 Survivor Master — รอดชีวิตอย่างยอดเยี่ยม!";
   let rColor  = "#2ed573";
-  if (player.score < 200) { rating = "⚠️ Barely Survived — รอดแบบฉิวเฉียด"; rColor = "#ffa502"; }
+  if (player.score < 300) { rating = "⚠️ Barely Survived — รอดแบบฉิวเฉียด"; rColor = "#ffa502"; }
   if (player.score < 100 || player.hp <= 0) { rating = "💀 Eliminated — ไม่รอด"; rColor = "#ff4757"; }
 
   document.getElementById("resultOutput").innerHTML = `
