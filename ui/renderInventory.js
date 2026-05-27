@@ -100,7 +100,7 @@ function toggleItemSelect(item, element) {
   const combo = _currentScenario ? checkCombo(_currentScenario, _selectedItems) : { success: false };
   if (combo.success) {
     _selectedItems.forEach(si => {
-      const el = document.querySelector(`[data-id="${si.id}"]`);
+    const el = document.querySelector(`[data-id="${CSS.escape(si.id)}"]`);
       if (el) el.classList.add("combo-success");
     });
   }
