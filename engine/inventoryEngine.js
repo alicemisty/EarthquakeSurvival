@@ -1,112 +1,76 @@
 // engine/inventoryEngine.js
-// ES Module — เวอร์ชันซ่อมแซมบัก ID Mismatch เรียบร้อยครับคุณครู
+// ES Module — เวอร์ชันซ่อมแซมบัก ID Mismatch และระบบ Selection สมบูรณ์แบบ
 
 export class InventoryEngine {
-
   constructor(maxCarryWeight) {
     this.maxCarryWeight = maxCarryWeight;
     this.items = [];
-    this.selectedItem = null;
+    this.selectedItem = null; // 🛠️ คืนค่าระบบจดจำไอเทมที่เลือก
   }
 
-  getMaxWeight() { return this.maxCarryWeight; }
-
+  getMaxWeight()     { return this.maxCarryWeight; }
   getCurrentWeight() {
-    return parseFloat(
-      this.items.reduce((sum, item) => sum + (item.weight || 0), 0).toFixed(1)
-    );
+    return parseFloat(this.items.reduce((s, i) => s + (i.weight || 0), 0).toFixed(1));
   }
-
   getRemainingWeight() {
-    return parseFloat(
-      (this.getMaxWeight() - this.getCurrentWeight()).toFixed(1)
-    );
+    return parseFloat((this.getMaxWeight() - this.getCurrentWeight()).toFixed(1));
   }
-
   canAddItem(itemData) {
     return this.getCurrentWeight() + (itemData.weight || 0) <= this.getMaxWeight();
   }
 
-  // -------------------------------------------------
-  // 🛠️ แก้ไขจุดนี้: ให้รองรับการตรวจสอบกรณี item ไม่มี property .id ตรงๆ
+  // toggle: add ถ้าไม่มี, remove ถ้ามีอยู่แล้ว
   toggleItem(itemData, itemKey) {
-    // ใช้ itemKey (คีย์หลักจาก items.js เช่น 'amulet') เป็น ID สำรองถ้าไม่มี itemData.id
-    const actualId = itemData.id || itemKey; 
+    const actualId = String(itemData.id || itemKey || "");
+    const idx = this.items.findIndex(i => String(i.id) === actualId);
     
-    const idx = this.items.findIndex(i => i.id === actualId);
-
     // REMOVE
     if (idx > -1) {
       this.items.splice(idx, 1);
-      if (this.selectedItem && this.selectedItem.id === actualId) {
+      // 🛠️ คืนค่าระบบเซฟตี้: ถ้าไอเทมที่ลบตรงกับที่เลือกอยู่ ให้ล้างสถานะเลือกด้วย
+      if (this.selectedItem && String(this.selectedItem.id) === actualId) {
         this.selectedItem = null;
       }
       return { action: "removed", success: true };
     }
-
+    
     // ADD
     if (!this.canAddItem(itemData)) {
       return { action: "none", success: false, message: "❌ น้ำหนักกระเป๋าเกิน!" };
     }
-
-    // แอบฝัง id ลงไปในแอบเจกต์ตอนเซฟเข้ากระเป๋าเพื่อป้องกันบั๊กระยะยาว
     this.items.push({ ...itemData, id: actualId });
     return { action: "added", success: true };
   }
 
-  // -------------------------------------------------
-  // 🛠️ แก้ไขจุดนี้: เช็คได้ทั้งจาก ID และคีย์ธรรมดา
-  hasItem(itemId) {
-    if (!itemId) return false;
-    return this.items.some(i => String(i.id) === String(itemId));
-  }
+  hasItem(itemId)  { return this.items.some(i => String(i.id) === String(itemId)); }
+  getItem(itemId)  { return this.items.find(i => String(i.id) === String(itemId)) || null; }
+  getAllItems()     { return [...this.items]; }
+  getPocketItems() { return this.items.filter(i => (i.weight || 0) <= 0.1); }
 
-  getItem(itemId) {
-    if (!itemId) return null;
-    return this.items.find(i => String(i.id) === String(itemId)) || null;
-  }
-
-  getAllItems() {
-    return [...this.items];
-  }
-
+  // 🛠️ คืนค่าและปรับปรุงระบบเลือกไอเทมให้เสถียร 100% ด้วย String()
   selectItem(itemId) {
     if (!itemId) return null;
     const found = this.items.find(i => String(i.id) === String(itemId));
     if (!found) return null;
-
     this.selectedItem = found;
     return found;
   }
 
-  clearSelection() { this.selectedItem = null; }
-  getSelectedItem() { return this.selectedItem; }
+  clearSelection()   { this.selectedItem = null; }
+  getSelectedItem()  { return this.selectedItem; }
 
   calculatePreparednessScore() {
     let score = 0;
-    const checkedTags = new Set();
-
+    const seen = new Set();
     this.items.forEach(item => {
-      const w = item.weight || 0;
-      if (item.tags) {
-        item.tags.forEach(tag => {
-          if (!checkedTags.has(tag)) {
-            if (tag === "direct")  score += 10;
-            if (tag === "social")  score += 10;
-            if (tag === "combo")   score += 10;
-            if (tag === "clean")   score += 10;
-            if (tag === "mental")  score += 10;
-            checkedTags.add(tag);
-          }
-        });
-      }
-      if (w > 1.0) score -= 3;
+      (item.tags || []).forEach(tag => {
+        if (!seen.has(tag)) {
+          seen.add(tag);
+          if (["direct","social","combo","clean","mental"].includes(tag)) score += 10;
+        }
+      });
+      if ((item.weight || 0) > 1.0) score -= 3;
     });
-
     return Math.max(0, score);
-  }
-
-  getPocketItems() {
-    return this.items.filter(i => (i.weight || 0) <= 0.1);
   }
 }
