@@ -57,11 +57,13 @@ export class InventoryEngine {
   // -------------------------------------------------
   // 🛠️ แก้ไขจุดนี้: เช็คได้ทั้งจาก ID และคีย์ธรรมดา
   hasItem(itemId) {
-    return this.items.some(i => i.id === itemId);
+    if (!itemId) return false;
+    return this.items.some(i => String(i.id) === String(itemId));
   }
 
   getItem(itemId) {
-    return this.items.find(i => i.id === itemId) || null;
+    if (!itemId) return null;
+    return this.items.find(i => String(i.id) === String(itemId)) || null;
   }
 
   getAllItems() {
@@ -69,7 +71,8 @@ export class InventoryEngine {
   }
 
   selectItem(itemId) {
-    const found = this.items.find(i => i.id === itemId);
+    if (!itemId) return null;
+    const found = this.items.find(i => String(i.id) === String(itemId));
     if (!found) return null;
 
     this.selectedItem = found;
