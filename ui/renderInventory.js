@@ -53,7 +53,7 @@ export function renderInventory(inventory = [], scenario = null, onSelectionChan
 // ==========================================
 function createPhoneButton() {
   const btn = document.createElement("div");
-  btn.className = "bag-item phone-special-btn";
+  btn.className = "backpack-item-btn phone-special-btn";
   btn.dataset.id = "__phone__";
   btn.innerHTML = `
     <div class="bag-icon">📱</div>
@@ -76,7 +76,7 @@ function createItemButton(item, scenario) {
   
   // 🛠️ แก้ไขตรงนี้: ตรวจเช็คว่าไอเทมนี้ถูกเลือกอยู่หรือไม่ ถ้าใช่ให้ใส่คลาสselected-item ตั้งแต่ตอนสร้างปุ่มเลย
   const isSelected = _selectedItems.some(si => String(si.id) === String(item.id));
-  btn.className = `bag-item ${isSelected ? "selected-item" : ""}`;
+btn.className = `backpack-item-btn ${isSelected ? "selected-item" : ""}`;
   
   btn.dataset.id = item.id;
 
