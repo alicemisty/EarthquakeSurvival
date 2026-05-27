@@ -73,7 +73,11 @@ function getUseTypeLabel(item) {
 
 function createItemButton(item, scenario) {
   const btn = document.createElement("div");
-  btn.className = "bag-item";
+  
+  // 🛠️ แก้ไขตรงนี้: ตรวจเช็คว่าไอเทมนี้ถูกเลือกอยู่หรือไม่ ถ้าใช่ให้ใส่คลาสselected-item ตั้งแต่ตอนสร้างปุ่มเลย
+  const isSelected = _selectedItems.some(si => String(si.id) === String(item.id));
+  btn.className = `bag-item ${isSelected ? "selected-item" : ""}`;
+  
   btn.dataset.id = item.id;
 
   btn.innerHTML = `
@@ -81,7 +85,6 @@ function createItemButton(item, scenario) {
     <div class="bag-name">${item.nameTh || item.id}</div>
     <div class="bag-item-weight" style="font-size:8px;color:#888;">${item.weight}kg · ${getUseTypeLabel(item)}</div>
   `;
-
 
   btn.addEventListener("click", () => toggleItemSelect(item, btn));
   return btn;
