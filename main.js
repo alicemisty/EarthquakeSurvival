@@ -9,7 +9,12 @@ import { InventoryEngine }     from "./engine/inventoryEngine.js";
 import { PassiveEngine }       from "./engine/passiveEngine.js";
 import { initScenarioRenderer, renderScenario } from "./ui/renderScenario.js";
 import { switchScreen, updateStatusBar, updatePassiveBox } from "./ui/effects.js";
-
+function startBGM() {
+  const bgm = document.getElementById("bgm");
+  if (!bgm) return;
+  bgm.volume = 0.35;
+  bgm.play().catch(() => {}); // catch กัน browser block autoplay
+}
 // ==========================================
 // GLOBAL PLAYER STATE
 // ==========================================
@@ -58,6 +63,7 @@ document.querySelectorAll(".class-card").forEach(card => {
 });
 
 document.getElementById("startBtn").addEventListener("click", () => {
+  startBGM(); 
   const nameVal = document.getElementById("playerName").value.trim();
   player.name     = nameVal || "Hero";
   player.gender   = document.getElementById("playerGender").value;
@@ -326,7 +332,7 @@ function nextStep() {
     player.hp = Math.max(1, player.hp - penalty);
   }
 
-  // 🛠️ แก้ไข: ส่ง Callback เพื่อผูกการคลิกเลือกไอเทมบนหน้าจอเนื้อเรื่อง ให้ส่งค่ากลับมาอัปเดตที่ Engine หลักด้วย
+  // [BUG FIX] renderScenario รับ 3 arguments — scenario, onDone, onSelectionChange
   renderScenario(scenario, onScenarioDone, (selectedItems) => {
     if (typeof inventoryEngine !== "undefined" && inventoryEngine.selectItem) {
       if (selectedItems && selectedItems.length > 0) {
