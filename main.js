@@ -268,15 +268,15 @@ function renderPlacementScreen() {
 
 function selectPlacement(choice) {
   player.placement = choice.id;
-  player.score    += choice.bonus;
+  player.score += choice.bonus;
 
   if (choice.bonus > 0) {
-    player.logs.push(`🏠 วางเป้ [${choice.id}] ถูกต้อง +${choice.bonus} คะแนน`);
+    player.logs.push(`🏠 วางเป้ [${choice.id}] ถูกต้อง + ${choice.bonus} คะแนน`);
   }
 
   if (choice.manaLoss > 0) {
     player.mana = Math.max(5, player.mana - choice.manaLoss);
-    player.logs.push(`🏠 วางเป้ [${choice.id}] Mana -${choice.manaLoss}`);
+    player.logs.push(`🏠 วางเป้ [${choice.id}] Mana - ${choice.manaLoss}`);
   }
 
   if (choice.pocket) {
@@ -286,14 +286,18 @@ function selectPlacement(choice) {
     player.logs.push("⚠️ เป้หลักโดนทับ — เข้า Pocket Mode เหลือของเล็ก" + (pocketItems.length ? ": " + pocketItems.map(i => i.nameTh).join(", ") : " (ไม่มีเลย)"));
   }
 
+  // 🛠️ เพิ่มบรรทัดนี้: ล้างค่าไอเทมที่เคยเลือกค้างไว้ใน Engine ก่อนเข้าสู่เนื้อเรื่องฉากถัดไป
+  if (typeof inventoryEngine !== "undefined" && inventoryEngine.clearSelection) {
+    inventoryEngine.clearSelection();
+  }
+
   // Build timeline
-  timeline    = buildTimeline();
+  timeline = buildTimeline();
   currentStep = 0;
-  isGameOver  = false;
+  isGameOver = false;
 
   // Init renderer
   initScenarioRenderer(player, passiveEngine);
-
   switchScreen("placementScreen", "storyQuizScreen");
   startGameplay();
 }
@@ -322,7 +326,19 @@ function nextStep() {
     player.hp = Math.max(1, player.hp - penalty);
   }
 
-  renderScenario(scenario, onScenarioDone);
+  // 🛠️ แก้ไข: ส่ง Callback เพื่อผูกการคลิกเลือกไอเทมบนหน้าจอเนื้อเรื่อง ให้ส่งค่ากลับมาอัปเดตที่ Engine หลักด้วย
+  renderScenario(scenario, onScenarioDone, (selectedItems) => {
+    if (typeof inventoryEngine !== "undefined" && inventoryEngine.selectItem) {
+      if (selectedItems && selectedItems.length > 0) {
+        // ดึงไอเทมชิ้นล่าสุดที่คลิกเลือก ส่งเข้าไปใน Engine เพื่อใช้คำนวณเนื้อเรื่อง
+        const lastPicked = selectedItems[selectedItems.length - 1];
+        inventoryEngine.selectItem(lastPicked.id);
+      } else {
+        // ถ้าผู้เล่นกดยกเลิกการเลือกจนหมด ให้เคลียร์ค่าใน Engine
+        inventoryEngine.clearSelection();
+      }
+    }
+  });
 }
 
 function onScenarioDone(updatedPlayer, log, result) {
