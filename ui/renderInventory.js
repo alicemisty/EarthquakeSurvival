@@ -19,7 +19,11 @@ let _onSelectionChange = null; // callback เมื่อ selection เปล�
 export function renderInventory(inventory = [], scenario = null, onSelectionChange = null) {
   _currentScenario   = scenario;
   _onSelectionChange = onSelectionChange;
-  _selectedItems     = [];
+  
+  // 🛠️ แก้ไข: ห้ามล้างเป็น [] ตรงๆ ให้กรองเฉพาะไอเทมที่ยังอยู่ในกระเป๋าจริง
+  _selectedItems = _selectedItems.filter(selected => 
+    inventory.some(item => String(item.id) === String(selected.id))
+  );
 
   const grid = document.getElementById("interactiveBagGrid");
   if (!grid) return;
@@ -34,6 +38,12 @@ export function renderInventory(inventory = [], scenario = null, onSelectionChan
   // Item buttons
   inventory.forEach(item => {
     const btn = createItemButton(item, scenario);
+    
+    // 🛠️ เพิ่มโค้ดส่วนนี้: ถ้าไอเทมนี้เคยถูกเลือกอยู่ก่อนแล้ว ให้ใส่คลาสไฮไลต์ค้างไว้เลย
+    if (_selectedItems.some(si => String(si.id) === String(item.id))) {
+      btn.classList.add("selected-item");
+    }
+    
     grid.appendChild(btn);
   });
 }
@@ -81,7 +91,8 @@ function createItemButton(item, scenario) {
 // Toggle select
 // ==========================================
 function toggleItemSelect(item, element) {
-  const idx = _selectedItems.findIndex(s => s.id === item.id);
+  // 🛠️ แก้ไข: แปลงแปลงเป็น String ทั้งคู่ก่อนใช้ findIndex
+  const idx = _selectedItems.findIndex(s => String(s.id) === String(item.id));
 
   if (idx > -1) {
     _selectedItems.splice(idx, 1);
@@ -100,7 +111,7 @@ function toggleItemSelect(item, element) {
   const combo = _currentScenario ? checkCombo(_currentScenario, _selectedItems) : { success: false };
   if (combo.success) {
     _selectedItems.forEach(si => {
-    const el = document.querySelector(`[data-id="${CSS.escape(si.id)}"]`);
+      const el = document.querySelector(`[data-id="${CSS.escape(si.id)}"]`);
       if (el) el.classList.add("combo-success");
     });
   }
@@ -108,7 +119,6 @@ function toggleItemSelect(item, element) {
 
   if (_onSelectionChange) _onSelectionChange([..._selectedItems]);
 }
-
 // ==========================================
 // Getters
 // ==========================================
